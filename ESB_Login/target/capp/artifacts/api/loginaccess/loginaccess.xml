@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/login" name="loginaccess" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="POST" protocol="http">
+        <inSequence>
+            <log level="custom">
+                <property expression="$body" name="Check"/>
+            </log>
+            <property name="Name" scope="default" type="STRING" value="Mahesh"/>
+            <property name="Key" scope="default" type="STRING" value="Sriram"/>
+            <property expression="json-eval($.Userid)" name="Userid" scope="default" type="STRING"/>
+            <property expression="json-eval($.Password)" name="Password" scope="default" type="STRING"/>
+            <log description="" level="custom">
+                <property expression="fn:concat('Userid is- ',get-property('Userid'))" name="Userid"/>
+                <property expression="fn:concat('Password is- ',get-property('Password'))" name="Password"/>
+            </log>
+            <filter xpath="(get-property('Userid')=get-property('Name')) and (get-property('Password')=get-property('Key'))">
+                <then>
+                    <payloadFactory media-type="json">
+                        <format>{"Status":"Success"}</format>
+                        <args/>
+                    </payloadFactory>
+                    <log level="custom">
+                        <property expression="fn:concat('Status-','Success')" name="LoginSuccess"/>
+                    </log>
+                </then>
+                <else>
+                    <payloadFactory media-type="json">
+                        <format>{"Status":"Your Credentials are not matched please check and try again"}</format>
+                        <args/>
+                    </payloadFactory>
+                    <log level="custom">
+                        <property expression="fn:concat('Status-','Please try again with correct userid and password')" name="Login_Fail"/>
+                    </log>
+                </else>
+            </filter>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </resource>
+</api>

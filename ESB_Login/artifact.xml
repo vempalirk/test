@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="loginaccess" groupId="com.example.ESB_Login.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/loginaccess.xml</file>
+    </artifact>
+    <artifact name="Sequence_Template_1" groupId="com.example.ESB_Login.template" version="1.0.0" type="synapse/sequenceTemplate" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/templates/Sequence_Template_1.xml</file>
+    </artifact>
+</artifacts>

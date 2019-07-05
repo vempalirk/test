@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template name="Sequence_Template_1" xmlns="http://ws.apache.org/ns/synapse">
+    <sequence/>
+</template>
